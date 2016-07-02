@@ -1,17 +1,17 @@
 .PHONY: all test_sql test_python clean
 
-all: test_sql test_python
+all: driver
 
 file := data/sample.$(n).csv
 
 $(file):
 	python gen_csv.py $(n) $@
 
-test_sql: $(file)
-	time test/test.sh $(file) $(command)
+drive: $(file)
+	time python driver/driver.py $(file) $(command)
 
-test_python: $(file)
-	time python test/test.py $(file) $(command)
+sqlite_load:
+	time driver/sqlite_load.sh $(file)
 
 clean:
 	rm -f data/*.csv
