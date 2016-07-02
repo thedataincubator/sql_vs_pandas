@@ -5,7 +5,7 @@ data/sample.csv:
 
 data/test.db:
 	if [ -f $@ ] ; then rm $@; fi
-	sqlite3 $@ < test.sql
+	sqlite3 $@ < test.sql > /dev/null
 
 clean:
 	rm -f data/sample.csv
