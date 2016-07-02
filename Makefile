@@ -2,37 +2,16 @@
 
 all: data/groupby.db data/load.db python_groupby python_load
 
-data/large.sample.csv:
-	python gen_csv.py 1000000 $@
+file := data/sample.$(n).csv
 
-data/small.sample.csv:
-	python gen_csv.py 100 $@
+$(file):
+	python gen_csv.py $(n) $@
 
-use_large_sample: data/large.sample.csv
-	if [ -f data/sample.csv ] ; then rm data/sample.csv; fi
-	cp data/large.sample.csv data/sample.csv
+test_sql: $(file)
+	time test/test.sh $(file) $(command)
 
-use_small_sample: data/small.sample.csv
-	if [ -f data/sample.csv ] ; then rm data/sample.csv; fi
-	cp data/small.sample.csv data/sample.csv
-
-data/groupby.db:
-	echo "SQL Groupby Test"
-	if [ -f $@ ] ; then rm $@; fi
-	time sqlite3 $@ < test/groupby.sql > /dev/null
-
-data/load.db:
-	echo "SQL Load Test"
-	if [ -f $@ ] ; then rm $@; fi
-	time sqlite3 $@ < test/load.sql > /dev/null
-
-python_groupby:
-	echo "Pandas Groupby Test"
-	time python test/groupby.py > /dev/null
-
-python_load:
-	echo "Pandas Load Test"
-	time python test/load.py > /dev/null
+test_python: $(file)
+	time python test/test.py $(file) $(command)
 
 clean:
-	rm -f data/sample.csv
+	rm -f data/*.csv
