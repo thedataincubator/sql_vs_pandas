@@ -1,11 +1,16 @@
 .PHONY: data/test.db clean
 
-data/sample.csv:
-	python gen_csv.py 100 > $@
+all: data/test.db python_test
 
-data/test.db:
+data/sample.csv:
+	python gen_csv.py 1000000 $@
+
+data/test.db: data/sample.csv
 	if [ -f $@ ] ; then rm $@; fi
-	sqlite3 $@ < test.sql > /dev/null
+	time sqlite3 $@ < test.sql > /dev/null
+
+python_test: data/sample.csv
+	time python test.py > /dev/null
 
 clean:
 	rm -f data/sample.csv

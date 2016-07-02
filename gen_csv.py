@@ -14,7 +14,8 @@ if __name__ == "__main__":
   import csv
 
   length = int(sys.argv[1])
-  writer = csv.writer(sys.stdout)
+  with open(sys.argv[2], "w") as fh:
+    writer = csv.writer(fh)
 
-  for row in gen_csv(length):
-    writer.writerow(row)
+    for row in gen_csv(length):
+      writer.writerow(row)
