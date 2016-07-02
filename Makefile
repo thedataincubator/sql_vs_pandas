@@ -1,6 +1,6 @@
-.PHONY: all data/groupby.db data/load.db python_groupby python_load use_large_sample use_small_sample clean
+.PHONY: all test_sql test_python clean
 
-all: data/groupby.db data/load.db python_groupby python_load
+all: test_sql test_python
 
 file := data/sample.$(n).csv
 
