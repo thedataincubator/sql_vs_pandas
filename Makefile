@@ -15,3 +15,6 @@ sqlite_load:
 
 clean:
 	rm -f data/*.csv
+
+deploy:
+	git push vagrant master
