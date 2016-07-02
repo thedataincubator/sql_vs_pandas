@@ -18,3 +18,6 @@ clean:
 
 deploy:
 	git push vagrant master
+
+pull-results:
+	rsync -r vagrant:~/sql_vs_pandas/results/ results/
