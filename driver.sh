@@ -8,7 +8,7 @@ do
   do
     for i in {1..10}
     do
-      make all n=$n command=$command > $DIR/$(date +%s%N).json
+      make -s all n=$n command=$command > $DIR/$(date +%s%N).json
     done
   done
 done
