@@ -8,7 +8,7 @@ $(file):
 	python gen_csv.py $(n) $@
 
 drive: $(file)
-	python driver/driver.py $(file) $(command)
+	python driver/driver.py $(file) $(program)
 
 sqlite_load:
 	driver/sqlite_load.sh $(file)
