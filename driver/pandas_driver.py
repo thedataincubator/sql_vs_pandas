@@ -12,3 +12,10 @@ class PandasDriver(object):
 
   def groupby(self):
     self.df.groupby("dept").agg({'birth': np.mean, 'salary': np.sum})
+
+  def filter(self):
+    self.df[self.df['dept'] == 'a']
+
+  def select(self):
+    self.df[["name", "dept"]]
+

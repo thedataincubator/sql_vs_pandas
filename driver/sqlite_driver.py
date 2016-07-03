@@ -28,3 +28,11 @@ class SqliteDriver(object):
   def groupby(self):
     self._cursor.execute('SELECT avg(birth), sum(salary) FROM test GROUP BY dept;')
     self._conn.commit()
+
+  def filter(self):
+    self._cursor.execute('SELECT * FROM test WHERE dept = "a";')
+    self._conn.commit()
+
+  def select(self):
+    self._cursor.execute('SELECT name, dept FROM test')
+    self._conn.commit()
