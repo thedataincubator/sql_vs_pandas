@@ -24,11 +24,10 @@ if __name__ == "__main__":
   else:
     raise ValueError("bad value for command")
 
-
   for task in ('load', 'groupby', 'filter', 'select'):
     with Timer() as timer:
       getattr(driver, task)()
     results[task] = timer.elapsed
 
   json.dump(results, sys.stdout)
-  print
+  print  # newline to file
