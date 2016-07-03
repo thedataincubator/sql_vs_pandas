@@ -24,7 +24,7 @@ if __name__ == "__main__":
   else:
     raise ValueError("bad value for command")
 
-  for task in ('load', 'groupby', 'filter', 'select'):
+  for task in ('load', 'groupby', 'filter', 'select', 'sort'):
     with Timer() as timer:
       getattr(driver, task)()
     results[task] = timer.elapsed

@@ -19,3 +19,5 @@ class PandasDriver(object):
   def select(self):
     self.df[["name", "dept"]]
 
+  def sort(self):
+    self.df.sort('name')

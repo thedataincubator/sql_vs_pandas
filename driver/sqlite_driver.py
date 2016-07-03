@@ -36,3 +36,7 @@ class SqliteDriver(object):
   def select(self):
     self._cursor.execute('SELECT name, dept FROM test')
     self._conn.commit()
+
+  def sort(self):
+    self._cursor.execute('SELECT * FROM test ORDER BY name ASC')
+    self._conn.commit()
