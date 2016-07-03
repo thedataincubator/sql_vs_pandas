@@ -10,7 +10,7 @@ from sqlite_driver import SqliteDriver
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(description='Pandas operations')
   parser.add_argument('file', help='location of csv data file')
-  parser.add_argument('command', help='either pandas or sqlite')
+  parser.add_argument('command', help='either pandas, sqlite, memory-sqlite')
   args = parser.parse_args()
 
   results = { 'command': args.command, 'file': args.file }
@@ -19,6 +19,8 @@ if __name__ == "__main__":
     driver = PandasDriver(args.file)
   elif args.command == "sqlite":
     driver = SqliteDriver(args.file, "data/test.db")
+  elif args.command == "memory-sqlite":
+    driver = SqliteDriver(args.file, ":memory:")
   else:
     raise ValueError("bad value for command")
 
