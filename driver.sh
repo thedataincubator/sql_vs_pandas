@@ -8,7 +8,9 @@ do
   do
     for i in {1..10}
     do
-      make -s all n=$n program=$program > $DIR/$(date +%s%N).json
+      make -s all n=$n program=$program >> $DIR/driver.json
     done
   done
+
+  make sqlite_load n=$n >> $DIR/sqlite_load.json
 done
