@@ -3,7 +3,7 @@
 file := data/sample.$(n).csv
 bonus := data/bonus.$(n).csv
 
-all: drive bonus
+all: drive
 
 $(file):
 	python gen/gen_csv.py $(n) $@
