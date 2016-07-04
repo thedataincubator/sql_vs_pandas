@@ -15,7 +15,7 @@ drive: $(file) $(bonus)
 	python driver/driver.py $(n) $(file) $(bonus) $(program)
 
 sqlite_load:
-	driver/sqlite_load.sh $(file) $(bonus)
+	time driver/sqlite_load.sh $(file) $(bonus)
 
 clean:
 	rm -f data/*.csv

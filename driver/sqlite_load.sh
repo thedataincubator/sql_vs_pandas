@@ -1,3 +1,5 @@
+#!/bin/bash
+
 TEST_DB='data/test.db'
 EMPLOYEE_FILE=$1
 BONUS_FILE=$2
