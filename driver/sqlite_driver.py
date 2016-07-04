@@ -1,6 +1,7 @@
 import os
 import sqlite3
 import pandas as pd # hack for loading
+from columns import bonus_columns, employee_columns
 
 class SqliteDriver(object):
   def __init__(self, file, db):
@@ -22,7 +23,7 @@ class SqliteDriver(object):
   def load(self):
     self._cursor.execute('CREATE TABLE test (name varchar(255), dept char(1), birth int, salary double);')
     df = pd.read_csv(self.file)
-    df.columns = ("name", "dept", "birth", "salary")
+    df.columns = employee_columns
     df.to_sql('test', self._conn, flavor='sqlite', if_exists='replace')
 
   def groupby(self):
