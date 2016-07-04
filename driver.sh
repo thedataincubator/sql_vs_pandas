@@ -11,7 +11,7 @@ do
   do
     for i in {1..10}
     do
-      make -s all n=$n program=$program >> $DIR/driver.json
+      make -s drive n=$n program=$program >> $DIR/driver.json
     done
   done
 done
