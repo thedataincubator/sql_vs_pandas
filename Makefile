@@ -5,7 +5,7 @@ all: drive
 file := data/sample.$(n).csv
 
 $(file):
-	python gen_csv.py $(n) $@
+	python gen/gen_csv.py $(n) $@
 
 drive: $(file)
 	python driver/driver.py $(file) $(program)
