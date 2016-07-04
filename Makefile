@@ -11,8 +11,8 @@ $(file):
 $(bonus): $(file)
 	cat $< | python gen/bonus_csv.py > $@
 
-drive: $(file)
-	python driver/driver.py $(file) $(program)
+drive: $(file) $(bonus)
+	python driver/driver.py $(n) $(file) $(bonus) $(program)
 
 sqlite_load:
 	driver/sqlite_load.sh $(file)
