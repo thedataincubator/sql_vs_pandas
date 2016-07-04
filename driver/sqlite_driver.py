@@ -41,11 +41,11 @@ class SqliteDriver(object):
     self._conn.commit()
 
   def select(self):
-    self._cursor.execute('SELECT name, dept FROM employee')
+    self._cursor.execute('SELECT name, dept FROM employee;')
     self._conn.commit()
 
   def sort(self):
-    self._cursor.execute('SELECT * FROM employee ORDER BY name ASC')
+    self._cursor.execute('SELECT * FROM employee ORDER BY name ASC;')
     self._conn.commit()
 
   def join(self):

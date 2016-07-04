@@ -1,4 +1,4 @@
-.PHONY: all clean sqlite_load drive
+.PHONY: all clean sqlite-load drive sqlite-limit
 
 file := data/sample.$(n).csv
 bonus := data/bonus.$(n).csv
@@ -14,8 +14,11 @@ $(bonus): $(file)
 drive: $(file) $(bonus)
 	python driver/driver.py $(n) $(file) $(bonus) $(program)
 
-sqlite_load:
+sqlite-load:
 	driver/sqlite_load.sh $(file) $(bonus)
+
+sqlite-limit:
+	driver/sqlite_load.sh $(file) $(bonus) full
 
 clean:
 	rm -f data/*.csv
